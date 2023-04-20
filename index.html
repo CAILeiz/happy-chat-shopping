@@ -8,7 +8,9 @@
   </head>
   <body>
     <script>
+      let index = 1;
       const ws = new WebSocket("ws://localhost:8080");
+      const bodyEle = document.body;
 
       ws.addEventListener("open", function (event) {
         console.log("WebSocket connection established");
@@ -16,6 +18,12 @@
 
       ws.addEventListener("message", function (event) {
         console.log("Received message:", event.data);
+        const divDom = document.createElement("div");
+        const textDom = document.createTextNode(
+          `第${index++}次聊天信息: ${event.data}`
+        );
+        divDom.appendChild(textDom);
+        bodyEle.appendChild(divDom);
       });
 
       ws.addEventListener("close", function (event) {
@@ -27,7 +35,6 @@
       });
       const msgArr = ["消息1", "消息2", "消息3", "消息4", "消息5"];
       function sendMessage() {
-        debugger;
         const index = Math.floor(Math.random() * (msgArr.length - 1));
         const msg = JSON.stringify(msgArr[index]);
         ws.send(msg);

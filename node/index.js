@@ -7,11 +7,12 @@ wss.on("connection", function connection(ws) {
 
   ws.on("message", function incoming(message) {
     console.log("Received message:", message);
+    const messageString = message.toString();
+
     // Broadcast message to all clients
-    console.log(wss.clients);
     wss.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
-        client.send(message);
+        client.send(messageString);
       }
     });
   });
