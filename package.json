@@ -1,0 +1,24 @@
+{
+  "name": "happy-chat-shopping",
+  "version": "1.0.0",
+  "description": "愉快-聊天-购物",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node ./node/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CAILeiz/happy-chat-shopping.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CAILeiz/happy-chat-shopping/issues"
+  },
+  "homepage": "https://github.com/CAILeiz/happy-chat-shopping#readme",
+  "dependencies": {
+    "ws": "^8.13.0"
+  }
+}

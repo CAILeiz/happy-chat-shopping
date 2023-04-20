@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>愉快-聊天-购物</title>
+  </head>
+  <body>
+    <script>
+      const ws = new WebSocket("ws://localhost:8080");
+
+      ws.addEventListener("open", function (event) {
+        console.log("WebSocket connection established");
+      });
+
+      ws.addEventListener("message", function (event) {
+        console.log("Received message:", event.data);
+      });
+
+      ws.addEventListener("close", function (event) {
+        console.log("WebSocket connection closed");
+      });
+
+      ws.addEventListener("error", function (event) {
+        console.error("WebSocket error:", event);
+      });
+      const msgArr = ["消息1", "消息2", "消息3", "消息4", "消息5"];
+      function sendMessage() {
+        debugger;
+        const index = Math.floor(Math.random() * (msgArr.length - 1));
+        const msg = JSON.stringify(msgArr[index]);
+        ws.send(msg);
+      }
+    </script>
+    <button onclick="sendMessage()">发送消息</button>
+  </body>
+</html>
